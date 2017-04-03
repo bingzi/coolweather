@@ -41,10 +41,10 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
         weatherLayout= (ScrollView) findViewById(R.id.weather_layout);
         titleUpdateTime= (TextView) findViewById(R.id.title_update_time);
-        titleCity= (TextView) findViewById(R.id.tite_city);
+        titleCity= (TextView) findViewById(R.id.title_city);
         degreeText= (TextView) findViewById(R.id.degree_text);
         weatherInfoText= (TextView)findViewById(R.id.weather_info_text);
-        forecastLayout= (LinearLayout) findViewById(R.id.foreast_layout);
+        forecastLayout= (LinearLayout) findViewById(R.id.forecast_layout);
         aqiText= (TextView) findViewById(R.id.aqi_text);
         pm25Text=(TextView) findViewById(R.id.pm25_text);
         comfortText=(TextView) findViewById(R.id.comfort_text);
@@ -77,7 +77,7 @@ public class WeatherActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(weather!=null&&"ok".equals(weather.status)){
+                        if(weather!=null &&"ok".equals(weather.status)){
                             SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
                             editor.putString("weather",responseText);
                             editor.apply();
@@ -115,7 +115,7 @@ public class WeatherActivity extends AppCompatActivity {
         weatherInfoText.setText(weatherInfo);
         forecastLayout.removeAllViews();
         for (Forecast forecast:weather.forecastList) {
-            View view = LayoutInflater.from(this).inflate(R.layout.foreast_item,forecastLayout,false);
+            View view = LayoutInflater.from(this).inflate(R.layout.forecast_item,forecastLayout,false);
             TextView dateText= (TextView) view.findViewById(R.id.date_text);
             TextView infoText= (TextView) view.findViewById(R.id.info_text);
             TextView maxText= (TextView) view.findViewById(R.id.max_text);
@@ -131,9 +131,9 @@ public class WeatherActivity extends AppCompatActivity {
             aqiText.setText(weather.aqi.city.aqi);
             pm25Text.setText(weather.aqi.city.pm25);
         }
-        String comfort="舒适度："+weather.suggsetion.comfort.info;
-        String carWash="洗车指数："+weather.suggsetion.carWash.info;
-        String sport="运动建议："+weather.suggsetion.sport.info;
+        String comfort="舒适度："+weather.suggestion.comfort.info;
+        String carWash="洗车指数："+weather.suggestion.carWash.info;
+        String sport="运动建议："+weather.suggestion.sport.info;
         comfortText.setText(comfort);
         sportText.setText(sport);
         carWashText.setText(carWash);

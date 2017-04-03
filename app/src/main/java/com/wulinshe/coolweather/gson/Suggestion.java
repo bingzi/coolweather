@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Administrator on 2017/2/23.
  */
 
-public class Suggsetion {
+public class Suggestion {
 
     @SerializedName("comf")
     public  Comfort comfort;
